@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merhaba👋</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --sidebar-bg: #ffffff;
+            --text-color: #1a1a1b;
+            --accent-color: #6366f1;
+            --button-bg: #eeeeee;
+            --transition-speed: 0.3s;
+        }
+
+        .dark {
+            --bg-color: #121212;
+            --sidebar-bg: #1e1e1e;
+            --text-color: #f3f4f6;
+            --accent-color: #818cf8;
+            --button-bg: #2d2d2d;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            width: 260px;
+            height: 100vh;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            transition: background-color var(--transition-speed);
+            z-index: 1000;
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        /* Tema Butonu */
+        .theme-btn {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .theme-btn:hover { transform: translateY(-2px); }
+
+        /* TIKLANABİLİR GÖRSEL VE YAZI ALANI */
+        .image-link-container {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none; /* Link alt çizgisini kaldırır */
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .image-link-container:hover {
+            transform: scale(1.02); /* Üzerine gelince hafif büyür */
+        }
+
+        .custom-image {
+            width: 100%;
+            max-width: 500px; /* Görselin maksimum genişliği */
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .image-caption {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-align: center;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">
+            <span id="btnIcon">🌙</span> <span id="btnText">Koyu Mod</span>
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <h1>Siteme Hoş Geldin</h1>
+        
+        <a href="3index.html" class="image-link-container">
+            <img src="https://picsum.photos/500/300" alt="Görsel" class="custom-image">
+            <span class="image-caption">Diğer Sayfaya Geçmek İçin Tıkla 🚀</span>
+        </a>
+    </main>
+
+    <script>
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark');
+            updateUI(true);
+        }
+
+        function toggleTheme() {
+            const isDark = document.body.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateUI(isDark);
+        }
+
+        function updateUI(isDark) {
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            btnText.innerText = isDark ? "Açık Mod" : "Koyu Mod";
+            btnIcon.innerText = isDark ? "☀️" : "🌙";
+        }
+    </script>
+
+</body>
+</html>
