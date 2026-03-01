@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merhaba👋</title>
+    <title>Ana Sayfa | EnglishSitem</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -11,18 +11,22 @@
         :root {
             --bg-color: #f8f9fa;
             --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
             --text-color: #1a1a1b;
             --accent-color: #6366f1;
             --button-bg: #eeeeee;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
             --transition-speed: 0.3s;
         }
 
         .dark {
             --bg-color: #121212;
             --sidebar-bg: #1e1e1e;
+            --card-bg: #2d2d2d;
             --text-color: #f3f4f6;
             --accent-color: #818cf8;
-            --button-bg: #2d2d2d;
+            --button-bg: #3d3d3d;
+            --card-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         body {
@@ -53,7 +57,7 @@
         .main-content {
             margin-left: 260px;
             padding: 40px;
-            width: 100%;
+            width: calc(100% - 260px);
         }
 
         /* Tema Butonu */
@@ -73,35 +77,70 @@
 
         .theme-btn:hover { transform: translateY(-2px); }
 
-        /* TIKLANABİLİR GÖRSEL VE YAZI ALANI */
+        /* Kartlar Bölümü */
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Öne Çıkan Resim Alanı */
         .image-link-container {
-            display: inline-block;
-            margin-top: 30px;
-            text-decoration: none; /* Link alt çizgisini kaldırır */
+            display: block;
+            margin-bottom: 50px;
+            text-decoration: none;
             color: inherit;
             transition: transform 0.3s ease;
         }
 
-        .image-link-container:hover {
-            transform: scale(1.02); /* Üzerine gelince hafif büyür */
-        }
+        .image-link-container:hover { transform: scale(1.01); }
 
         .custom-image {
             width: 100%;
-            max-width: 500px; /* Görselin maksimum genişliği */
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            display: block;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
         .image-caption {
             margin-top: 15px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
             text-align: center;
             display: block;
         }
 
+        @media (max-width: 768px) {
+            .sidebar { width: 80px; }
+            .sidebar span { display: none; }
+            .main-content { margin-left: 80px; width: calc(100% - 80px); }
+        }
     </style>
 </head>
 <body>
@@ -113,12 +152,31 @@
     </aside>
 
     <main class="main-content">
-        <h1>Siteme Hoş Geldin</h1>
+        <h1>Siteme Hoş Geldin 👋</h1>
+        <p style="font-size: 1.1rem; opacity: 0.7;">İngilizce öğrenme serüveninde yeni bir adım at.</p>
         
         <a href="3index.html" class="image-link-container">
-            <img src="https://picsum.photos/500/300" alt="Görsel" class="custom-image">
-            <span class="image-caption">Diğer Sayfaya Geçmek İçin Tıkla 🚀</span>
+            <img src="https://picsum.photos/1000/500?education" alt="Görsel" class="custom-image">
+            <span class="image-caption">Güncel Sunuma Gitmek İçin Tıkla 🚀</span>
         </a>
+
+        <hr style="opacity: 0.1; margin: 50px 0;">
+
+        <h2>Neler Keşfedeceksin?</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>📚 Pratik Kelimeler</h3>
+                <p>Günlük hayatta en çok kullanılan 500 kelime ve örnek cümleleri ile kelime haznenizi geliştirin.</p>
+            </div>
+            <div class="card">
+                <h3>✍️ Dil Bilgisi</h3>
+                <p>Karmaşık gramer kurallarını en basit ve anlaşılır haliyle, örneklerle birlikte öğrenin.</p>
+            </div>
+            <div class="card">
+                <h3>🎧 Dinleme Egzersizleri</h3>
+                <p>Farklı aksanları anlamak için hazırlanmış özel ses kayıtları ve videolarımızı inceleyin.</p>
+            </div>
+        </div>
     </main>
 
     <script>
