@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunumlar | EnglishSitem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #1a1a1b;
+            --accent-color: #6366f1;
+            --transition-speed: 0.3s;
+        }
+
+        .dark {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f3f4f6;
+            --accent-color: #818cf8;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background var(--transition-speed);
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .header { text-align: center; margin-bottom: 50px; }
+        
+        /* Galeri Izgarası */
+        .presentation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Sunum Kartı Stili (Ege Tolgay sitesindeki gibi) */
+        .pres-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pres-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .pres-info { padding: 20px; }
+        .pres-info h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
+        .pres-info p { margin: 0; opacity: 0.7; font-size: 0.9rem; }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="2index.html" class="back-btn">← Ana Sayfaya Dön</a>
+    
+    <div class="header">
+        <h1>Ders Sunumları</h1>
+        <p>İncelemek istediğiniz dersin üzerine tıklayın.</p>
+    </div>
+
+    <div class="presentation-grid">
+        
+        <a href="https://docs.google.com/presentation/d/1Ag6VbWWNIPYiPZ1x2SBMb_KfK4wvsVv1XpjDX5rJzos/edit" target="_blank" class="pres-card">
+            <div class="thumbnail" style="background-image: url('https://picsum.photos/400/200?1');"></div>
+            <div class="pres-info">
+                <h3>Genel İngilizce Giriş</h3>
+                <p>Temel kavramlar ve tanışma dersi sunumu.</p>
+            </div>
+        </a>
+
+        <a href="#" class="pres-card">
+            <div class="thumbnail" style="background-image: url('https://picsum.photos/400/200?2');"></div>
+            <div class="pres-info">
+                <h3>Kelime Bilgisi - 1</h3>
+                <p>Günlük hayatta en çok kullanılan 100 fiil.</p>
+            </div>
+        </a>
+
+        <a href="#" class="pres-card">
+            <div class="thumbnail" style="background-image: url('https://picsum.photos/400/200?3');"></div>
+            <div class="pres-info">
+                <h3>Zamanlar (Tenses)</h3>
+                <p>Present, Past ve Future Tense özeti.</p>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+<script>
+    // TEMA HAFIZASINI KONTROL ET
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+</script>
+
+</body>
+</html>
